@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+             if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M21</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para la exploración del editor de Bubble.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a sumergirnos en el editor de Bubble, la herramienta con la que daremos vida a nuestras aplicaciones. ¡Prepárense para construir sus propias experiencias interactivas!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten. Si están listos para explorar el editor de Bubble, cierren su puño derecho. Si necesitan un impulso extra de concentración, toquen su oreja derecha con la mano izquierda."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos principales: 1. Conocer a fondo el editor de Bubble y sus secciones. 2. Comprender cómo funciona cada componente del editor. 3. Comenzar a crear la primera funcionalidad de nuestra app de alojamiento, el registro de usuarios."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Conocer una herramienta que ha transformado la creación de prototipos web.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy les presento Figma, una herramienta de diseño que ha revolucionado la forma en que se crean interfaces de usuario. Con Figma, los diseñadores pueden colaborar en tiempo real y crear prototipos interactivos de páginas web y aplicaciones de manera fácil e intuitiva."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Figma".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Figma permite a los diseñadores crear bocetos, wireframes y prototipos interactivos de una manera fluida y colaborativa. Observen cómo esta herramienta simplifica el proceso de diseño, permitiendo a los equipos trabajar juntos en la creación de interfaces de usuario atractivas y funcionales. Aunque hoy nos enfocaremos en Bubble, las herramientas de diseño como Figma son parte esencial del proceso creativo."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Figma".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece, Genios? Figma nos muestra cómo herramientas bien diseñadas pueden transformar la manera en que se construyen productos digitales. En nuestra misión, exploraremos Bubble, una plataforma que integra diseño y funcionalidad, permitiéndonos crear aplicaciones de manera integral."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 21.5 minutos</div>
+        <div class="subtitle">Explorar el editor de Bubble, sus componentes y funcionalidades clave.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción al Editor de Bubble".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a desentrañar los secretos del editor de Bubble, el corazón de nuestra plataforma de desarrollo No-Code. Este editor es donde construiremos, diseñaremos y daremos vida a nuestras aplicaciones. Es como un taller digital donde podemos visualizar y materializar nuestras ideas, uniendo diseño y funcionalidad en una sola interfaz. A partir de hoy, el editor de Bubble será nuestra herramienta principal, así que acompáñenme a conocer sus rincones y funcionalidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "Layout del Editor".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El editor de Bubble está organizado en varias secciones que nos permiten gestionar diferentes aspectos de nuestra aplicación. En la parte superior tenemos una barra de herramientas donde podemos encontrar menús para editar, ver y organizar nuestros elementos. A la izquierda encontraremos el menú lateral, donde están las principales pestañas del editor: Design, Workflow, Data, Styles, Plugins y Settings. En el centro del editor encontraremos la interfaz principal, donde construiremos nuestras páginas. En este espacio, arrastraremos los componentes que conformarán nuestra app. Finalmente, en la parte derecha, encontraremos la ventana de propiedades, que nos permite personalizar cada uno de los elementos que estemos usando en nuestro proyecto."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (2 minutos):</strong> Proyectar Diapositiva 11 "Pestaña Diseño (Design)".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "La pestaña 'Design' es donde vamos a diseñar la interfaz de usuario de nuestra aplicación. Aquí encontramos una variedad de elementos que podemos arrastrar a nuestra página, como botones, inputs, textos, imágenes, contenedores y más. Al seleccionar un elemento, podemos modificar sus propiedades en la ventana de la derecha, ajustando su aspecto, tamaño, posición y más. En esta pestaña podemos dibujar y organizar la apariencia de nuestra app, asegurándonos de que cada elemento esté donde lo necesitemos. Es como tener un lienzo digital donde nuestra creatividad puede dar forma a la interfaz de usuario."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Pestaña Flujos de Trabajo (Workflow)".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "La pestaña 'Workflow' es donde programamos la lógica de nuestra aplicación, definiendo qué acciones ocurren cuando un usuario interactúa con ella. Por ejemplo, podemos definir qué sucede cuando un usuario hace clic en un botón, completa un formulario o realiza una búsqueda. En esta pestaña creamos secuencias de acciones llamadas flujos de trabajo o workflows, las cuales nos permiten construir la funcionalidad de la aplicación, conectando elementos con eventos.  Los flujos de trabajo son el corazón de la interactividad en nuestras aplicaciones, y nos permiten hacer que la información y los datos interactúen con los usuarios."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Pestaña Datos (Data)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La pestaña ‘Data’ es donde gestionamos la información que nuestra aplicación almacena. Aquí podemos ver y crear nuestros 'Data Types', que, como vimos en la misión pasada, son las tablas que contienen la información de nuestros usuarios, propiedades y reservas. También podemos definir los campos o ‘Fields’ de cada 'Data Type', así como sus relaciones. Esta pestaña nos permite interactuar con nuestros datos, añadir, modificar o eliminar entradas de la base de datos. La pestaña Data es el cerebro de nuestra app y nos permite ver y modificar la información con la que trabajamos. Aquí, los datos cobran vida."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Pestaña Estilos (Styles)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La pestaña 'Styles' es donde controlamos la apariencia de todos nuestros componentes de manera global. Al definir un estilo, podemos aplicarlo a múltiples elementos, asegurándonos de que nuestra app tenga un diseño consistente y profesional. Aquí podemos ajustar aspectos como fuentes, colores, márgenes, bordes, sombras, y más, creando una apariencia unificada para toda la app. Utilizar estilos nos ahorra tiempo y esfuerzo, permitiéndonos mantener un diseño coherente y eficiente. Esta pestaña permite que nuestros diseños se mantengan limpios y ordenados en el tiempo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 15 "Pestaña Plugins".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "La pestaña 'Plugins' es donde ampliamos las capacidades de nuestra aplicación, añadiendo funcionalidades adicionales que Bubble no incluye de manera nativa.  Hay una gran cantidad de plugins que nos permiten conectar con diferentes servicios externos, como pasarelas de pago, APIs de mapas, plataformas de email marketing, etc. Estos plugins son desarrollados tanto por la comunidad de Bubble como por otros desarrolladores, lo que nos permite extender las capacidades de nuestra app sin necesidad de programar todo desde cero. El uso de plugins nos da mucha versatilidad y poder a la hora de construir aplicaciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Pestaña Settings".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, la pestaña 'Settings' es donde configuramos los ajustes generales de nuestra app, como el idioma, la zona horaria, la configuración de privacidad y la integración con otros servicios. Aquí también podemos gestionar el plan al que está suscrita nuestra aplicación y las opciones de seguridad. La pestaña Settings nos da el control completo sobre nuestra aplicación, asegurándonos de que funcione como lo esperamos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Core Features: Guardado Automático".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una característica clave de Bubble es su guardado automático. Cada cambio que realizamos en el editor se guarda de forma instantánea, evitando que perdamos nuestro trabajo por algún error o falla inesperada. Además de guardarse automáticamente, el editor nos muestra una notificación en la parte superior cada vez que un cambio es guardado. ¡Gracias a esta función, podemos concentrarnos en lo importante, que es construir nuestra aplicación sin preocuparnos por perder datos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1.5 minutos):</strong> Proyectar Diapositiva 18 "Core Features: Undo y Redo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Otra característica esencial en Bubble es la función de 'Undo' y 'Redo', que nos permite revertir o rehacer cambios que hayamos hecho por error.  En la parte superior del editor, podemos encontrar los botones para deshacer y rehacer acciones. Esta herramienta es invaluable para experimentar sin miedo, ya que siempre tenemos la opción de revertir las cosas si no nos gustan los resultados. La función ‘Undo’ y ‘Redo’ nos ayuda a tomar riesgos y explorar diferentes opciones de diseño y funcionalidad, brindándonos la libertad creativa necesaria para hacer aplicaciones innovadoras."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 11 (1.5 minutos):</strong> Proyectar Diapositiva 19 "Core Features: Page Selector".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para navegar entre las diferentes páginas de nuestra app, Bubble nos ofrece el 'Page Selector', una lista desplegable que encontraremos en la parte superior izquierda del editor. Este menú nos permite cambiar entre las páginas que estemos creando, así como acceder a los elementos reutilizables y los workflows de nuestro proyecto. Gracias a esta herramienta, podemos navegar fácilmente entre todas las partes de nuestra app, haciendo más sencillo nuestro trabajo y garantizando que los diferentes elementos se conecten correctamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1.5 minutos):</strong> Proyectar Diapositiva 20 "Core Features: Property Editor".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para modificar cualquier elemento que seleccionemos en el editor, usaremos el 'Property Editor', la ventana emergente que nos aparece al hacer clic en cualquier componente. Esta ventana nos permite ajustar todas las propiedades de cada elemento, desde su apariencia y tamaño, hasta su comportamiento e interacción con el usuario. La ventana de 'Property Editor' es fundamental para personalizar nuestras aplicaciones y hacer que tengan un aspecto y comportamiento únicos, siempre manteniendo el control y los ajustes de cada elemento."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "Core Features: Issue Checker".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, la herramienta 'Issue Checker' es nuestra aliada para identificar errores y problemas en nuestra aplicación.  Bubble analiza nuestra app en tiempo real y nos muestra cualquier inconsistencia o error que pueda surgir. Utilizando esta herramienta, podemos asegurarnos de que nuestra app esté libre de errores y que funcione correctamente. ¡Recuerden revisar el 'Issue Checker' antes de compartir o publicar sus aplicaciones para garantizar la mejor experiencia de usuario!"</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 14 (1 minuto):</strong> Proyectar Diapositiva 22 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hagamos una pausa para revisar lo que hemos logrado hasta ahora. Hemos recorrido las principales pestañas del editor de Bubble, entendido su estructura y la funcionalidad de cada componente. Ya conocen los Core Features del editor y comprenden cómo gestionar su proyecto. ¡Hemos cubierto una gran parte de nuestra misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🕺 Actividad 4: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Recargar la energía con un baile rápido de 30 segundos.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Baile de 30 Segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a recargar energías con un baile rápido. Pongan música y muévanse libremente por 30 segundos. ¡Lo importante es disfrutar y liberar tensiones!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro - 30 Segundos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Beneficios del Baile".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente movimiento, Genios! Bailar no solo libera tensiones, sino que también mejora nuestro estado de ánimo y nuestra concentración. Ahora estamos listos para continuar con energía renovada."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Reorganización de equipos y preparación de materiales para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora vamos a formar equipos de 4 personas. Es importante que trabajen con personas distintas a las de la última misión. Tienen 1 minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, cada equipo elija a un representante para recoger las Magic Tablets. Tienen un minuto para asegurarse de que cada equipo esté listo para trabajar."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 29 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 6: Challenge ⏰ Tiempo: 15 minutos</div>
+        <div class="subtitle">Comenzar a crear la primera funcionalidad de la app de hosting: el registro de usuario.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+             <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Título del Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de empezar a construir nuestra aplicación de hosting en Bubble. Hoy comenzaremos con una de las funcionalidades más importantes: el registro de usuarios. ¡Vamos a dar los primeros pasos en la creación de nuestra app!"</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 31 "El Reto del Registro de Usuario".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto de hoy consiste en diseñar la primera pantalla de registro de usuarios. Para esto, usen todo lo que hemos aprendido sobre el editor de Bubble. Añadan los elementos necesarios, como campos de texto para nombre, correo electrónico y contraseña, así como un botón para confirmar el registro. Ubiquen los elementos donde crean que deben ir y diseñenlos de manera que se vean claros y estéticos. No se preocupen si su diseño no es perfecto, lo importante es que comiencen a experimentar con los elementos y las opciones que Bubble les ofrece. Recuerden que hoy nos estamos concentrando en el diseño, la lógica de conexión entre los elementos la veremos en la siguiente misión. ¡Tienen 10 minutos para diseñar su pantalla!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 32 "Cronómetro - 10 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 33 "Compartir Diseños".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, reúnanse con el equipo más cercano y compartan sus diseños de registro de usuario. Expliquen por qué eligieron esa distribución de elementos, qué les pareció más difícil y qué encontraron más sencillo de hacer. Tienen 2 minutos para esta actividad."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 34 "Cronómetro - 2 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos lo que hemos logrado en esta misión. Hemos explorado el editor de Bubble, comprendido el funcionamiento de sus secciones y comenzado a crear una de las funcionalidades principales de nuestra app, el registro de usuarios. ¡Han dado un paso importante en su camino de creación de aplicaciones!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 36 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Hoy demostraron su capacidad para aprender y aplicar nuevos conocimientos. Su esfuerzo y dedicación en la exploración de Bubble merecen un reconocimiento especial. ¡You've Got Mon-e por su increíble trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎁 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+         <div class="subtitle">Dinámica para premiar la atención al detalle y el conocimiento.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Pregunta Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento del Easter Egg. Para comprobar su atención al detalle, les lanzaré una pregunta relacionada con algo que mencioné durante el Brain Gym. Los tres primeros en levantar la mano tendrán la oportunidad de responder en voz baja y ganar Mon-e. ¡Listos para el reto!"</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 38 "La Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué herramienta de diseño les mostré en la Innovación del Día que permite a los diseñadores colaborar en tiempo real y crear prototipos interactivos de páginas web y aplicaciones? ¡Levanten la mano si saben la respuesta!"</td>
+           </tr>
+            <tr>
+                 <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 39 "Respuesta Correcta".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Voy a escuchar las respuestas. Tú primero, dime tu respuesta en voz baja. Ahora tú, segundo, ¿qué opinas? Y finalmente tú, tercero. ¡La respuesta correcta es Figma! Felicidades a los ganadores, se llevan Mon-e por su excelente atención y conocimiento. ¡Muy bien, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrar la sesión con orden y respeto al espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 40 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de honrar nuestro espacio de trabajo. Por favor, asegúrense de que todo esté en orden, devuelvan las Magic Tablets y recojan cualquier material utilizado. Mantener nuestro Dojo limpio nos ayuda a trabajar mejor. ¡Gracias por su colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
